@@ -1,0 +1,289 @@
+// GOOGLE FONT
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap");
+
+// HEADER HEIGHT
+$header-height: 3rem;
+
+// COLORS
+$black-color: #343a40;
+$grey-color: #adb5bd;
+$purple-color: #b6abfa;
+$dark-purple-color: #9d92e0;
+$pink-color: #fedada;
+$white-color: #fff;
+
+// BODY FONT
+$body-font: "Poppins", sans-serif;
+
+// FONT WEIGHT
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// MARGINS
+$margin-1: 0.5rem;
+$margin-2: 1rem;
+$margin-3: 1.5rem;
+$margin-4: 2rem;
+$margin-5: 2.5rem;
+$margin-6: 3rem;
+
+// Z-INDEX
+$z-back: -10;
+$z-normal: 1;
+$z-tooltip: 10;
+$z-fixed: 100;
+
+// BASE & RESET
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: $header-height 0 0 0;
+  font-family: $body-font;
+  font-weight: $font-medium;
+  letter-spacing: -1px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// LAYOUT
+.l-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $white-color;
+  z-index: $z-fixed;
+}
+
+.bd-grid {
+  max-width: 1200px;
+  width: calc(100% - 2rem);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: 2rem;
+  margin-left: $margin-2;
+  margin-right: $margin-2;
+}
+
+// HEADER SECTION
+.nav {
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 40px;
+    }
+
+    span {
+      font-weight: $font-semibold;
+      color: $black-color;
+      margin-left: 3px;
+    }
+  }
+
+  &__menu {
+    @media screen and (max-width: 768px) {
+      position: fixed;
+      width: 75%;
+      height: 100vh;
+      top: $header-height;
+      right: -100%;
+      padding: 2rem;
+      background-color: $white-color;
+      transition: 0.3s;
+    }
+  }
+
+  &__item {
+    margin-bottom: $margin-3;
+  }
+
+  &__link {
+    color: $black-color;
+  }
+
+  &__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: $black-color;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
+// SHOW & HIDDEN HEADER MENU
+.show-menu {
+  right: 0;
+}
+
+// HERO SECTION
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    height: calc(100vh - 3rem);
+    grid-template-rows: 1fr 1.5fr;
+    row-gap: 2rem;
+  }
+
+  &__data {
+    align-self: flex-end;
+  }
+
+  &__title {
+    font-size: 38px;
+    font-weight: $font-bold;
+    color: $black-color;
+    margin-bottom: $margin-2;
+    line-height: 1.2;
+  }
+
+  &__text {
+    color: $grey-color;
+    margin-bottom: $margin-2;
+  }
+
+  &__button {
+    display: inline-flex;
+    background-color: $purple-color;
+    padding: 15px 38px;
+    color: $white-color;
+    border-radius: 100px;
+
+    &:hover {
+      background-color: $dark-purple-color;
+    }
+  }
+
+  &__img {
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+// MEDIA QUERIES 768PX
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  // HEADER SECTION
+  .nav {
+    height: $header-height + 2rem;
+    position: relative;
+
+    &__logo {
+      img {
+        width: auto;
+      }
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    &__menu {
+      display: flex;
+      align-items: center;
+    }
+
+    &__list {
+      display: flex;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+    }
+
+    &__item {
+      margin: 0 $margin-3 0;
+    }
+
+    &__toggle {
+      display: none;
+    }
+  }
+
+  // HERO SECTION
+  .hero {
+    &__container {
+      height: 100vh;
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__data {
+      justify-self: center;
+      align-self: center;
+    }
+
+    &__title {
+      font-size: 54px;
+    }
+
+    &__text,
+    &__button {
+      font-size: 18px;
+    }
+
+    &__img {
+      width: 470px;
+    }
+  }
+}
+
+// MEDIA QUERIES 1200PX
+@media screen and (min-width: 1200px) {
+  .bd-grid {
+    margin: auto;
+  }
+}
+
+// MEDIA QUERIES 1380PX [My Device Resolution]
+@media screen and (min-width: 1380px) {
+  .hero {
+    &__data {
+      justify-self: flex-start;
+    }
+
+    &__title {
+      font-size: 64px;
+    }
+
+    &__img {
+      width: auto;
+    }
+  }
+}
